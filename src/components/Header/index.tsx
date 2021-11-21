@@ -22,6 +22,7 @@ export const AuthHeader: React.FC = () => {
             <Box
                 bg={'white'}
                 px={4}
+                pt={2}
                 borderBottom={1}
                 borderStyle={'solid'}
                 borderColor={useColorModeValue('gray.200', 'gray.900')}
@@ -40,7 +41,7 @@ export const AuthHeader: React.FC = () => {
                         onClick={isOpen ? onClose : onOpen}
                     />
                     <HStack spacing={8} alignItems={'center'}>
-                        <Image src={CBLogo} maxH="60px"></Image>
+                        <Image src={CBLogo} maxH="150px"></Image>
                         <HStack as={'nav'} spacing={8} display={{ base: 'none', md: 'flex' }}>
                             <Link href="/">Home</Link>
                             <Link href="/trending" id="trending">

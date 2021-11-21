@@ -15,7 +15,7 @@ import {
 import React from 'react';
 
 // Assets
-import signInImage from '../assets/img/signInImage.png';
+import signInImage from '../assets/img/decentrabox.png';
 import AuthLayout from '../layouts/AuthLayout';
 
 function SignIn() {
