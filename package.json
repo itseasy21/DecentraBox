@@ -12,8 +12,12 @@
     "@fontsource/open-sans": "^4.5.0",
     "@fontsource/raleway": "^4.5.0",
     "@fontsource/roboto": "^4.5.0",
+    "@truffle/hdwallet-provider": "^1.7.0",
     "apexcharts": "^3.27.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
     "classnames": "2.3.1",
+    "dotenv": "^10.0.0",
     "framer-motion": "^4.1.17",
     "match-sorter": "6.3.0",
     "moment": "2.29.1",
@@ -34,7 +38,9 @@
     "react-table": "7.7.0",
     "react-tagsinput": "3.19.0",
     "stylis": "^4.0.10",
-    "stylis-plugin-rtl": "^2.1.0"
+    "stylis-plugin-rtl": "^2.1.0",
+    "truffle": "^5.4.21",
+    "web3": "^1.6.1"
   },
   "scripts": {
     "start": "react-scripts start",
