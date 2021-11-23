@@ -4,6 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import OrbitTest from './pages/OrbitTest';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import theme from './theme/theme';
@@ -14,6 +15,7 @@ const AppRoutes: React.FC = () => {
             <Route path="/">
                 <Route exact path="/" component={SignIn} />
                 <Route exact path="/signup" component={SignUp} />
+                <Route exact path="/orbit" component={OrbitTest} />
                 {/* <Route path="/trending" component={Trending} />
                 <Route path="/global" component={GlobalMarket} /> */}
             </Route>
