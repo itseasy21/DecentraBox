@@ -12,9 +12,11 @@ import {
     Switch,
     Text,
     useColorModeValue,
+    useToast,
 } from '@chakra-ui/react';
 import React from 'react';
 import { FaApple, FaFacebook, FaGoogle } from 'react-icons/fa';
+import { Redirect } from 'react-router';
 
 // Assets
 import BgSignUp from '../assets/img/header.png';
@@ -25,6 +27,20 @@ function SignUp() {
     const textColor = useColorModeValue('gray.700', 'white');
     const bgColor = useColorModeValue('white', 'gray.700');
     const bgIcons = useColorModeValue('teal.200', 'rgba(255, 255, 255, 0.5)');
+    const toast = useToast();
+    const toastIdRef = React.useRef<string | number | undefined>();
+
+    function signUP() {
+        toastIdRef.current = toast({
+            title: 'Success',
+            description: 'Proceed to signin please',
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+        });
+        return <Redirect to="/signin"></Redirect>;
+    }
+
     return (
         <AuthLayout>
             <Flex direction="column" alignSelf="center" justifySelf="center" overflow="hidden">
@@ -154,18 +170,7 @@ function SignUp() {
                                 mb="24px"
                                 size="lg"
                             />
-                            <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
-                                Password
-                            </FormLabel>
-                            <Input
-                                fontSize="sm"
-                                ms="4px"
-                                borderRadius="15px"
-                                type="password"
-                                placeholder="Your password"
-                                mb="24px"
-                                size="lg"
-                            />
+
                             <FormControl display="flex" alignItems="center" mb="24px">
                                 <Switch id="remember-login" colorScheme="teal" me="10px" />
                                 <FormLabel htmlFor="remember-login" mb="0" fontWeight="normal">
@@ -187,6 +192,7 @@ function SignUp() {
                                 _active={{
                                     bg: '#ff8400',
                                 }}
+                                onClick={signUP}
                             >
                                 SIGN UP
                             </Button>
@@ -194,7 +200,7 @@ function SignUp() {
                         <Flex flexDirection="column" justifyContent="center" alignItems="center" maxW="100%" mt="0px">
                             <Text color="#FF6100" fontWeight="medium">
                                 Already have an account?
-                                <Link color="#ff6a00" as="span" ms="5px" href="#" fontWeight="bold">
+                                <Link href="/signin" color="#ff6a00" as="span" ms="5px" fontWeight="bold">
                                     Sign In
                                 </Link>
                             </Text>
