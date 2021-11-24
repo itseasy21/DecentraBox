@@ -12,7 +12,6 @@
     "@fontsource/open-sans": "^4.5.0",
     "@fontsource/raleway": "^4.5.0",
     "@fontsource/roboto": "^4.5.0",
-    "@truffle/hdwallet-provider": "^1.7.0",
     "apexcharts": "^3.27.3",
     "axios": "^0.24.0",
     "babel-polyfill": "^6.26.0",
@@ -39,9 +38,7 @@
     "react-table": "7.7.0",
     "react-tagsinput": "3.19.0",
     "stylis": "^4.0.10",
-    "stylis-plugin-rtl": "^2.1.0",
-    "truffle": "^5.4.21",
-    "web3": "^1.6.1"
+    "stylis-plugin-rtl": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -69,8 +66,6 @@
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-simple-import-sort": "^5.0.3",
-    "gulp": "4.0.2",
-    "gulp-append-prepend": "1.0.9",
     "prettier": "2.2.1"
   },
   "browserslist": {
