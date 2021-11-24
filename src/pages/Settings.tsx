@@ -24,7 +24,7 @@ export const ProfileMenuButton: React.FC<ProfileMenuBtnIProps> = ({ children, ac
     return (
         <Flex
             rounded="md"
-            bg={active ? '#3BA88B' : 'none'}
+            bg={active ? '#FF6100' : 'none'}
             _hover={{
                 bg: ['primary.100', 'primary.100', 'primary.600', 'primary.600'],
                 color: active ? 'white' : useColorModeValue('gray.500', 'gray.400'),
@@ -99,7 +99,7 @@ export const Settings: React.FC = () => {
                             setUsername(e.target.value);
                         }}
                         placeholder="Enter a name"
-                        borderColor="teal"
+                        borderColor="#FF6100"
                     />
                 </Stack>
                 <Stack spacing={3} pb="24px">
@@ -113,7 +113,7 @@ export const Settings: React.FC = () => {
                             setFirstName(e.target.value);
                         }}
                         placeholder="Enter a name"
-                        borderColor="teal"
+                        borderColor="#FF6100"
                     />
                 </Stack>
                 <Stack spacing={3} pb="24px">
@@ -127,7 +127,7 @@ export const Settings: React.FC = () => {
                             setLastName(e.target.value);
                         }}
                         placeholder="Enter a last name"
-                        borderColor="teal"
+                        borderColor="#FF6100"
                     />
                 </Stack>
                 <Stack spacing={3} pb="24px">
@@ -141,7 +141,7 @@ export const Settings: React.FC = () => {
                             setEmail(e.target.value);
                         }}
                         placeholder="Enter an email"
-                        borderColor="teal"
+                        borderColor="#FF6100"
                     />
                 </Stack>
                 <Stack spacing={3} pb="24px">
@@ -155,7 +155,7 @@ export const Settings: React.FC = () => {
                             setAddress(e.target.value);
                         }}
                         placeholder="Enter an address"
-                        borderColor="teal"
+                        borderColor="#FF6100"
                     />
                 </Stack>
                 <Stack spacing={3} pb="24px">
@@ -169,7 +169,7 @@ export const Settings: React.FC = () => {
                             setCity(e.target.value);
                         }}
                         placeholder="Enter a city"
-                        borderColor="teal"
+                        borderColor="#FF6100"
                     />
                 </Stack>
                 <Stack spacing={3} pb="24px">
@@ -183,7 +183,7 @@ export const Settings: React.FC = () => {
                             setCountry(e.target.value);
                         }}
                         placeholder="Enter a country"
-                        borderColor="teal"
+                        borderColor="#FF6100"
                     />
                 </Stack>
                 <Stack spacing={3} pb="24px">
@@ -198,7 +198,7 @@ export const Settings: React.FC = () => {
                             setPostCode(parseInt(e.target.value));
                         }}
                         placeholder="Enter a postcode"
-                        borderColor="teal"
+                        borderColor="#FF6100"
                     />
                 </Stack>
                 <Stack spacing={3} pb="24px">
@@ -212,7 +212,8 @@ export const Settings: React.FC = () => {
                             setCountryCode(e.target.value);
                         }}
                         placeholder="Enter a country code"
-                        borderColor="teal"
+                        borderColor="#FF6100"
+                        
                     />
                 </Stack>
                 <Stack spacing={3} pb="24px">
@@ -227,7 +228,7 @@ export const Settings: React.FC = () => {
                             setPhoneNumber(parseInt(e.target.value));
                         }}
                         placeholder="Enter a phone number"
-                        borderColor="teal"
+                        borderColor="#FF6100"
                     />
                 </Stack>
                 <Stack spacing={3} pb="24px">
@@ -241,7 +242,7 @@ export const Settings: React.FC = () => {
                             setWebsite(e.target.value);
                         }}
                         placeholder="Enter a website"
-                        borderColor="teal"
+                        borderColor="#FF6100"
                     />
                 </Stack>
 
@@ -250,7 +251,7 @@ export const Settings: React.FC = () => {
                     // onClick={saveProfile}
                     loadingText={'Submitting . . .'}
                     color="white"
-                    bg="#3BA88E"
+                    bg="#FF6100"
                 >
                     Save
                 </Button>
