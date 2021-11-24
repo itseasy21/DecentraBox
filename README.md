@@ -20,7 +20,11 @@ Provides Decentralised Database over IPFS.
 Provides the base framework to build client side operations.
 
 ### NodeJS + Sam CLI
-Provides the cli operation to deploy the API Endpoints created in NodeJS to AWS Lambda + AWS API Gateway
+Provides the cli operation to deploy the API Endpoints created in NodeJS to AWS Lambda + AWS API Gateway.
+Used to deploy 2 API Endpoints for sending our email to users & to generate browser based key for EStuary.
+
+### AWS SES
+Use to send emails to users to login to the application
 
 ## Infrastructure
 
@@ -38,14 +42,15 @@ Follow this guide for the steps: [https://suda.pl/free-webrtc-star-heroku/](http
 
 2. On one terminal we will deploy the backend APIs
 * Install Sam Cli (https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html) and configure it
-* Now navigate to backeend-api directory and run `sam deploy --guided` and note the api endpoints
+* Navigate to `backend-api` folder & open the `get-api/app.js` and update your EStuary permanent key in there.
+* Now navigate to `backend-api` directory and run `sam deploy --guided` and note the api endpoints
 
 3. On another terminal we will run the application
 * Update the API Endpoints in the following: `src/pages/ProcessLogin.tsx` & `src/pages/Dashboard.tsx`
 * In the terminal run the following to install and start the application
 ```
-yarn install
-yarn start
+yarn install    # If first time use
+yarn start      # should start the app on localhost:3000
 ```
 
 ## Available Scripts
