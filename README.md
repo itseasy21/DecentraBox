@@ -31,6 +31,22 @@ Used with CI/CD Setup in order to host application.
 Used to deploy IPFS webrtc-star discovery server for DecentraBox.
 Follow this guide for the steps: [https://suda.pl/free-webrtc-star-heroku/](https://suda.pl/free-webrtc-star-heroku/)
 
+## Getting Started
+
+1. To get started first clone the git repo
+```git clone https://github.com/itseasy21/DecentraBox```
+
+2. On one terminal we will deploy the backend APIs
+* Install Sam Cli (https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html) and configure it
+* Now navigate to backeend-api directory and run `sam deploy --guided` and note the api endpoints
+
+3. On another terminal we will run the application
+* Update the API Endpoints in the following: `src/pages/ProcessLogin.tsx` & `src/pages/Dashboard.tsx`
+* In the terminal run the following to install and start the application
+```
+yarn install
+yarn start
+```
 
 ## Available Scripts
 
