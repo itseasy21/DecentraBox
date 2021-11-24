@@ -104,6 +104,8 @@ const Header: React.FC = () => {
                         <Image src={CBLogo} maxH="60px"></Image>
                         <HStack as={'nav'} spacing={8} display={{ base: 'none', md: 'flex' }}>
                             <Link href="/dashboard">Home</Link>
+                            <Link href="/dashboard">Recent Files</Link>
+                            <Link href="/dashboard">Starred Files</Link>
                             <Link href="/settings" id="trending">
                                 Settings
                             </Link>
