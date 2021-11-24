@@ -10,6 +10,7 @@ import Settings from './pages/Settings';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import theme from './theme/theme';
+import Landing from './pages/Landing';
 
 const AppRoutes: React.FC = () => {
     return (
@@ -19,6 +20,7 @@ const AppRoutes: React.FC = () => {
                 <Route exact path="/signup" component={SignUp} />
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/settings" component={Settings} />
+                <Route exact path="/landing" component={Landing} />
                 <Route exact path="/processLogin/:email" component={ProcessLogin} />
                 {/* <Route path="/trending" component={Trending} />
                 <Route path="/global" component={GlobalMarket} /> */}
