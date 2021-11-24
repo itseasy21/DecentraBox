@@ -134,12 +134,29 @@ export const Dashboard: React.FC = () => {
     useEffect(() => {
         if (currentUser) {
             fetchData();
-            //and renew api key TODO
-            // console.log(userFiles);
+            //and renew api key if expired
+            if (currentUser?.expiry) {
+                if (Date.parse(currentUser?.expiry) <= Date.now()) {
+                    resetApiKey();
+                }
+            }
         } else {
             window.alert('Please login using your email!');
         }
     }, []);
+
+    const resetApiKey = async () => {
+        const userEmail = currentUser?.email;
+        //fetch browser key
+        const key = await axios.get('https://soyrm3nmp9.execute-api.ap-southeast-2.amazonaws.com/Prod/getapi/');
+        //add to local storage
+        const tmpUser: UserResponseDTO = {
+            email: userEmail!,
+            token: key.data.token,
+            expiry: key.data.expiry,
+        };
+        setCurrentUser(tmpUser);
+    };
 
     const fetchData = async () => {
         if (!dbHandler) {
@@ -241,6 +258,12 @@ export const Dashboard: React.FC = () => {
 
     const uploadFile = async () => {
         setIsSubmitting(true);
+
+        //key check
+        if (currentUser?.expiry) {
+            console.log(Date.parse(currentUser?.expiry));
+        }
+
         if (image && dbHandler) {
             try {
                 const multipartForm = new FormData();

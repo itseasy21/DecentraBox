@@ -6,12 +6,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Dashboard from './pages/Dashboard';
 import Landing from './pages/Landing';
+import Nominee from './pages/Nominee';
 import ProcessLogin from './pages/ProcessLogin';
 import Settings from './pages/Settings';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import theme from './theme/theme';
-import Nominee from './pages/Nominee';
 
 const AppRoutes: React.FC = () => {
     return (

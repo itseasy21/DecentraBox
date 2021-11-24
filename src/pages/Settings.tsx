@@ -213,7 +213,6 @@ export const Settings: React.FC = () => {
                         }}
                         placeholder="Enter a country code"
                         borderColor="#FF6100"
-                        
                     />
                 </Stack>
                 <Stack spacing={3} pb="24px">
