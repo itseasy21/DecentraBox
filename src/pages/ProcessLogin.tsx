@@ -26,7 +26,7 @@ export const ProcessLogin: React.FC = () => {
         setCurrentUser(tmpUser);
     };
 
-    return <>{currentUser ? <Redirect to="/dashboard"></Redirect> : <Redirect to="/"></Redirect>}</>;
+    return <>{email ? <Redirect to="/dashboard"></Redirect> : <Redirect to="/"></Redirect>}</>;
 };
 
 export default ProcessLogin;

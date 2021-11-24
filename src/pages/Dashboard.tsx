@@ -1,10 +1,12 @@
 import 'react-table/react-table.css';
 
+import { QuestionIcon } from '@chakra-ui/icons';
 // Chakra imports
 import {
     Box,
     Button,
     Center,
+    Checkbox,
     Flex,
     FormControl,
     FormLabel,
@@ -17,21 +19,27 @@ import {
     Stack,
     Switch,
     Text,
+    Tooltip,
     useColorModeValue,
     useToast,
     VStack,
 } from '@chakra-ui/react';
 import axios from 'axios';
+import { base64StringToBlob } from 'blob-util';
+import CryptoJS from 'crypto-js';
 import FormData from 'form-data';
+import fs from 'fs';
 import * as IPFS from 'ipfs';
 import OrbitDB from 'orbit-db';
 import KeyValueStore from 'orbit-db-kvstore';
+import path from 'path';
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Redirect } from 'react-router';
 import ReactTable from 'react-table';
 
 import { ReactComponent as MediaIcon } from '../assets/icons/media.svg';
+import SettingsModal from '../components/SettingsModal';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { UserResponseDTO } from '../interfaces/UserResponseDTO';
 import GeneralLayout from '../layouts/GeneralLayout';
@@ -54,6 +62,7 @@ export const Dashboard: React.FC = () => {
     const [fileDesc, setfileDesc] = useState<string>('');
     const [fileName, setfileName] = useState<string>('');
     const [fileSize, setfileSize] = useState<string>('');
+    const [fileEncryption, setfileEncryption] = useState<boolean>(true);
     const [userFiles, setUserFiles] = useState<FileStorage[]>([]);
 
     //orbitDB & IPFS
@@ -114,9 +123,7 @@ export const Dashboard: React.FC = () => {
                             <Link href={'https://dweb.link/ipfs/' + row.cid} target="_blank">
                                 <Button>View File</Button>
                             </Link>
-                            <Link href="/settings">
-                                <Button>Settings</Button>
-                            </Link>
+                            <SettingsModal></SettingsModal>
                         </HStack>
                     </Center>
                 </>
@@ -182,6 +189,44 @@ export const Dashboard: React.FC = () => {
             setfileName(file.name);
             setfileSize(formatBytes(file.size));
             const reader = new FileReader();
+            // reader.readAsDataURL(file);
+            reader.onload = () => {
+                // Do whatever you want with the file contents
+                if (fileEncryption) {
+                    console.log(file);
+                    const fileExt = path.extname(file.name);
+                    console.log(fileExt);
+                    let ciphertext: string | null = null;
+                    //if image
+                    if (fileExt == '.txt') {
+                        const fileContents = fs.readFileSync(file.name);
+                        ciphertext = Buffer.from(fileContents).toString('base64');
+                        // ciphertext = CryptoJS.AES.encrypt(file.arrayBuffer(), 'DecenTraBox21').toString();
+
+                        //}  else if (fileExt == '.jpg' || fileExt == '.png' || fileExt == '.jpeg') {
+                        //     const base64 = reader.result;
+                        //     console.log(base64);
+                        //     ciphertext = CryptoJS.AES.encrypt(base64 as string, 'DecenTraBox21').toString();
+                    } else {
+                        toastIdRef.current = toast({
+                            title: 'Warning',
+                            description: 'We current only support encryption for text files.',
+                            status: 'warning',
+                            duration: 9000,
+                            isClosable: true,
+                        });
+                    }
+                    // const buffer = fs.readFileSync(file.name);
+                    // console.log(ciphertext);
+                    // if (ciphertext) {
+                    //     fs.writeFileSync(file.name + '.txt', ciphertext);
+                    //     const tmp = new File
+                    //     // const blob = base64StringToBlob(ciphertext, file.type);
+                    //     // const tmpFile = new File(blob, file.name);
+                    //     setImage(tmpFile);
+                    // }
+                }
+            };
             reader.readAsDataURL(file);
         });
     }, []);
@@ -296,7 +341,7 @@ export const Dashboard: React.FC = () => {
                         </Box>
                         {image ? (
                             <VStack
-                                px={'8px'}
+                                p={'8px'}
                                 spacing={2}
                                 border="1px solid"
                                 borderColor={useColorModeValue('gray.600', 'gray.600')}
@@ -316,6 +361,21 @@ export const Dashboard: React.FC = () => {
                                         w="460px"
                                         onChange={(e: ChangeEvent<HTMLInputElement>) => setfileDesc(e.target.value)}
                                     />
+                                </FormControl>
+                                <FormControl id="virtual" paddingTop={'10px'}>
+                                    <Checkbox
+                                        colorScheme="teal"
+                                        isChecked={fileEncryption}
+                                        onChange={(e) => setfileEncryption(e.target.checked)}
+                                    >
+                                        File Encryption &nbsp;
+                                        <Tooltip
+                                            label="Files on IPFS are public and can be seen by anyone, encrypt your file to keep it safe    "
+                                            fontSize="md"
+                                        >
+                                            <QuestionIcon />
+                                        </Tooltip>
+                                    </Checkbox>
                                 </FormControl>
                                 <Button
                                     isLoading={isSubmitting}
