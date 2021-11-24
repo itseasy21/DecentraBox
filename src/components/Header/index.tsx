@@ -107,6 +107,7 @@ const Header: React.FC = () => {
                             <Link href="/settings" id="trending">
                                 Settings
                             </Link>
+                            <Link href="/nominee">Nominee</Link>
                             <Link href="/global">Global Market Information</Link>
                         </HStack>
                     </HStack>
