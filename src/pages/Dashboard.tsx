@@ -51,7 +51,6 @@ export const Dashboard: React.FC = () => {
     //file upload
     const [isSubmitting, setIsSubmitting] = useState<boolean>();
     const [image, setImage] = useState<File>(); //formData: nft Image File
-    const [filePreview, setfilePreview] = useState<string>(''); //formData: nft Image Preview Base64 String
     const [fileDesc, setfileDesc] = useState<string>('');
     const [fileName, setfileName] = useState<string>('');
     const [fileSize, setfileSize] = useState<string>('');

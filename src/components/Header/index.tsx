@@ -44,10 +44,10 @@ export const AuthHeader: React.FC = () => {
                         <Image src={CBLogo} maxH="150px"></Image>
                         <HStack as={'nav'} spacing={8} display={{ base: 'none', md: 'flex' }}>
                             <Link href="/">Home</Link>
-                            <Link href="/trending" id="trending">
-                                Trending
+                            <Link href="/signup" id="signup">
+                                Signup
                             </Link>
-                            <Link href="/global">Global Market Information</Link>
+                            <Link href="/about">About</Link>
                         </HStack>
                     </HStack>
                     <Flex alignItems={'center'}>
@@ -103,9 +103,9 @@ const Header: React.FC = () => {
                     <HStack spacing={8} alignItems={'center'}>
                         <Image src={CBLogo} maxH="60px"></Image>
                         <HStack as={'nav'} spacing={8} display={{ base: 'none', md: 'flex' }}>
-                            <Link href="/">Home</Link>
-                            <Link href="/trending" id="trending">
-                                Trending
+                            <Link href="/dashboard">Home</Link>
+                            <Link href="/settings" id="trending">
+                                Settings
                             </Link>
                             <Link href="/global">Global Market Information</Link>
                         </HStack>
