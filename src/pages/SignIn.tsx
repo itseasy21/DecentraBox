@@ -13,13 +13,105 @@ import {
     useColorModeValue,
 } from '@chakra-ui/react';
 import React from 'react';
+import { useCallback, useState } from "react";
+import { useHistory } from "react-router";
+import nodeMailer from "nodemailer";
+
+import { magic } from '../magic';
 
 // Assets
 import signInImage from '../assets/img/decentrabox.png';
 import AuthLayout from '../layouts/AuthLayout';
 
+import { Magic } from 'magic-sdk';
+// import { Magic } from "@magic-sdk/admin";
+
+const m = new Magic('pk_live_37CEDD8B3DB56B54');
+const serverUrl = window.location.href;
+
+
+
+async function sendLink(){
+    
+    // const emailInput = document.getElementById("email");
+    const email = (document.getElementById("email") as HTMLInputElement).value;
+    let message = "";
+    console.log("Email: ", email);
+    if(!email){
+        message = "invalid";
+        console.log("invalid");
+    }
+    else{
+        console.log("valid");
+        // const transport = nodeMailer.createTransport({
+        //     host: process.env.EMAIL_HOST,
+        //     port: 587,
+        //     auth: {
+        //         user: process.env.EMAIL_USER,
+        //         pass: process.env.EMAIL_PASSWORD
+        //     }
+        //   });
+          
+        //   // Make email template for magic link
+        //   const emailTemplate = ({ email, link  }) => `
+        //     <h2>Hey ${email}</h2>
+        //     <p>Here's the login link you just requested:</p>
+        //     <p>${link}</p>
+        //   `
+        //   const mailOptions = {
+        //     from: "You Know",
+        //     html: emailTemplate({
+        //       email,
+        //       link: `http://localhost:3000/dashboard`,
+        //     }),
+        //     subject: "Your Magic Link",
+        //     to: email,
+        //   };
+        //   return transport.sendMail(mailOptions, (error) => {
+        //     if (error) {
+        //       message="not-sent: " + error
+        //     } else {
+        //       message="sent"
+        //     }
+        //     console.log("End: ", message);
+        //   });
+
+        // const didToken = await Magic.auth.loginWithMagicLink({ email });
+        //   const res = await fetch(`${serverUrl}user/login`, {
+        //     headers: new Headers({
+        //       Authorization: "Bearer " + didToken
+        //     }),
+        //     method: "POST"
+        //   });
+        //  if (res.status == 200){
+        //      console.log("logged in!");
+        //  } 
+
+    }
+}
+
 function SignIn() {
+    const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const history = useHistory();
+    
+    const login = useCallback(async()=>{
+        const email = (document.getElementById("email") as HTMLInputElement).value;
+        setIsLoggingIn(true);
+
+    try {
+      await magic.auth.loginWithMagicLink({
+        email,
+        redirectURI: new URL("/callback", window.location.origin).href,
+      });
+      history.push("/");
+    } catch {
+      setIsLoggingIn(false);
+    }
+    },[])
+
     // Chakra color mode
+
+
     const titleColor = useColorModeValue('#FF6100', 'teal.200');
     const textColor = useColorModeValue('gray.400', 'white');
     return (
@@ -58,6 +150,7 @@ function SignIn() {
                                     Email
                                 </FormLabel>
                                 <Input
+                                    id="email"
                                     borderRadius="15px"
                                     mb="24px"
                                     fontSize="sm"
@@ -97,6 +190,7 @@ function SignIn() {
                                     _active={{
                                         bg: 'orange.400',
                                     }}
+                                    // onClick={login}
                                 >
                                     SIGN IN
                                 </Button>
