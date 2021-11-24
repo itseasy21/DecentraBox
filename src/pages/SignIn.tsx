@@ -18,7 +18,7 @@ import React from 'react';
 import signInImage from '../assets/img/decentrabox.png';
 import AuthLayout from '../layouts/AuthLayout';
 
-function SignIn() {
+export const SignIn: React.FC = () => {
     // Chakra color mode
     const titleColor = useColorModeValue('#FF6100', 'teal.200');
     const textColor = useColorModeValue('gray.400', 'white');
@@ -139,6 +139,6 @@ function SignIn() {
             </Flex>
         </AuthLayout>
     );
-}
+};
 
 export default SignIn;
