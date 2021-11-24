@@ -2,6 +2,10 @@
 
 With DecentraBox files aren’t stored in centralized data centers— instead, they're encrypted, split into pieces, and distributed on a filecoin+ipfs network.
 
+## Demo Link
+
+Demo: https://main.d1duwthxt3y612.amplifyapp.com/
+
 ## Tech Stack
 
 The following technologies were used to make this awesome product.
