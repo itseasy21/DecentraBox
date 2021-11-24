@@ -33,8 +33,13 @@ export const SignIn: React.FC = () => {
         setprocessing(true);
         if (email) {
             try {
+                const currentPath =
+                    window.location.protocol + '//' + window.location.hostname + ':' + window.location.port;
                 const processLogin = await axios.get(
-                    'https://soyrm3nmp9.execute-api.ap-southeast-2.amazonaws.com/Prod/send-magiclink?to=' + email,
+                    'https://soyrm3nmp9.execute-api.ap-southeast-2.amazonaws.com/Prod/send-magiclink?to=' +
+                        email +
+                        '&host=' +
+                        currentPath,
                 );
                 if (processLogin.status == 200) {
                     toastIdRef.current = toast({
