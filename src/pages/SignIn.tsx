@@ -11,8 +11,10 @@ import {
     Switch,
     Text,
     useColorModeValue,
+    useToast,
 } from '@chakra-ui/react';
-import React from 'react';
+import axios from 'axios';
+import React, { ChangeEvent, useState } from 'react';
 
 // Assets
 import signInImage from '../assets/img/decentrabox.png';
@@ -22,6 +24,41 @@ export const SignIn: React.FC = () => {
     // Chakra color mode
     const titleColor = useColorModeValue('#FF6100', 'teal.200');
     const textColor = useColorModeValue('gray.400', 'white');
+    const [email, setEmail] = useState<string>('');
+    const [processing, setprocessing] = useState<boolean>(false);
+    const toast = useToast();
+    const toastIdRef = React.useRef<string | number | undefined>();
+
+    const login = async () => {
+        setprocessing(true);
+        if (email) {
+            try {
+                const processLogin = await axios.get(
+                    'https://soyrm3nmp9.execute-api.ap-southeast-2.amazonaws.com/Prod/send-magiclink?to=' + email,
+                );
+                if (processLogin.status == 200) {
+                    toastIdRef.current = toast({
+                        title: 'Success',
+                        description: 'Check your email for your unique signin link',
+                        status: 'success',
+                        duration: 9000,
+                        isClosable: true,
+                    });
+                }
+            } catch (error) {
+                console.log(error);
+                toastIdRef.current = toast({
+                    title: 'Error',
+                    description: 'An Error Occurred while processing your signin, please try later.',
+                    status: 'error',
+                    duration: 9000,
+                    isClosable: true,
+                });
+            }
+        }
+        setprocessing(false);
+    };
+
     return (
         <AuthLayout>
             <Flex position="relative" mb="40px">
@@ -51,7 +88,7 @@ export const SignIn: React.FC = () => {
                                 Welcome Back
                             </Heading>
                             <Text mb="36px" ms="4px" color={textColor} fontWeight="bold" fontSize="14px">
-                                Enter your email and password to sign in
+                                Enter your email to sign in
                             </Text>
                             <FormControl>
                                 <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
@@ -64,24 +101,8 @@ export const SignIn: React.FC = () => {
                                     type="text"
                                     placeholder="Your email adress"
                                     size="lg"
+                                    onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                                 />
-                                <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
-                                    Password
-                                </FormLabel>
-                                <Input
-                                    borderRadius="15px"
-                                    mb="36px"
-                                    fontSize="sm"
-                                    type="password"
-                                    placeholder="Your password"
-                                    size="lg"
-                                />
-                                <FormControl display="flex" alignItems="center">
-                                    <Switch id="remember-login" colorScheme="teal" me="10px" />
-                                    <FormLabel htmlFor="remember-login" mb="0" ms="1" fontWeight="normal">
-                                        Remember me
-                                    </FormLabel>
-                                </FormControl>
                                 <Button
                                     fontSize="10px"
                                     type="submit"
@@ -97,6 +118,7 @@ export const SignIn: React.FC = () => {
                                     _active={{
                                         bg: 'orange.400',
                                     }}
+                                    onClick={login}
                                 >
                                     SIGN IN
                                 </Button>
@@ -110,7 +132,7 @@ export const SignIn: React.FC = () => {
                             >
                                 <Text color={textColor} fontWeight="medium">
                                     Don't have an account?
-                                    <Link color={titleColor} as="span" ms="5px" fontWeight="bold">
+                                    <Link href="/signup" color={titleColor} as="span" ms="5px" fontWeight="bold">
                                         Sign Up
                                     </Link>
                                 </Text>
