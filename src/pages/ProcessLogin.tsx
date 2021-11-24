@@ -3,12 +3,7 @@ import React, { useEffect } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 
 import useLocalStorage from '../hooks/useLocalStorage';
-
-interface UserResponseDTO {
-    email: string;
-    token: string;
-    expiry: Date;
-}
+import { UserResponseDTO } from '../interfaces/UserResponseDTO';
 
 export const ProcessLogin: React.FC = () => {
     const { email } = useParams<{ email: string }>();
