@@ -281,7 +281,7 @@ export const Dashboard: React.FC = () => {
                     //fetch old files
                     try {
                         const tmp2Files: FileStorage[] = dbHandler.get(currentUser?.email);
-                        if (tmp2Files.length != 0) tmpFiles = tmp2Files;
+                        if (tmp2Files && tmp2Files.length != 0) tmpFiles = tmp2Files;
                     } catch (error) {
                         console.log(error);
                     }
