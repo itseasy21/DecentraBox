@@ -5,6 +5,7 @@ With DecentraBox files aren’t stored in centralized data centers— instead, t
 ## Demo Link
 
 Fleek Hosted Demo: https://45xxc-daaaa-aaaad-qa3za-cai.ic.fleek.co/
+
 AWS Hosted Demo: https://main.d1duwthxt3y612.amplifyapp.com/
 
 ## Tech Stack
