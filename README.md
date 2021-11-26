@@ -1,6 +1,59 @@
-# Getting Started with Create React App
+# Getting Started with DecentraBox
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+With DecentraBox files aren’t stored in centralized data centers— instead, they're encrypted, split into pieces, and distributed on a filecoin+ipfs network.
+
+## Demo Link
+
+Fleek Hosted Demo: https://45xxc-daaaa-aaaad-qa3za-cai.ic.fleek.co/
+
+AWS Hosted Demo: https://main.d1duwthxt3y612.amplifyapp.com/
+
+## Tech Stack
+
+The following technologies were used to make this awesome product.
+
+### EStuary (https://estuary.tech/)
+Provides with direct access to deals on filecoin and storage of files on IPFS Network
+
+### OrbitDB (https://github.com/orbitdb/orbit-db)
+Provides Decentralised Database over IPFS.
+
+### ReactJS
+Provides the base framework to build client side operations.
+
+### NodeJS + Sam CLI
+Provides the cli operation to deploy the API Endpoints created in NodeJS to AWS Lambda + AWS API Gateway.
+Used to deploy 2 API Endpoints for sending our email to users & to generate browser based key for EStuary.
+
+### AWS SES
+Use to send emails to users to login to the application
+
+## Infrastructure
+
+### AWS Amplify
+Used with CI/CD Setup in order to host application.
+
+### Heroku
+Used to deploy IPFS webrtc-star discovery server for DecentraBox.
+Follow this guide for the steps: [https://suda.pl/free-webrtc-star-heroku/](https://suda.pl/free-webrtc-star-heroku/)
+
+## Getting Started
+
+1. To get started first clone the git repo
+```git clone https://github.com/itseasy21/DecentraBox```
+
+2. On one terminal we will deploy the backend APIs
+* Install Sam Cli (https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html) and configure it
+* Navigate to `backend-api` folder & open the `get-api/app.js` and update your EStuary permanent key in there.
+* Now navigate to `backend-api` directory and run `sam deploy --guided` and note the api endpoints
+
+3. On another terminal we will run the application
+* Update the API Endpoints in the following: `src/pages/ProcessLogin.tsx` & `src/pages/Dashboard.tsx`
+* In the terminal run the following to install and start the application
+```
+yarn install    # If first time use
+yarn start      # should start the app on localhost:3000
+```
 
 ## Available Scripts
 
@@ -14,11 +67,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `yarn build`
 
 Builds the app for production to the `build` folder.\
@@ -28,19 +76,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
