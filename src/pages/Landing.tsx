@@ -64,7 +64,7 @@ function Landing() {
                                 files!
                             </Text>
                             <Link href="/signin">
-                                <Button color="white" bgColor={titleColor}>
+                                <Button borderColor={titleColor} textColor={titleColor} bgColor="white" >
                                     Get Started
                                 </Button>
                             </Link>
@@ -342,7 +342,7 @@ function Landing() {
                                 files!
                             </Text>
                             <Link href="/signin">
-                                <Button color="white" bgColor={titleColor}>
+                                <Button color="white" borderColor={titleColor} textColor={titleColor} bgColor="white">
                                     Get Started
                                 </Button>
                             </Link>

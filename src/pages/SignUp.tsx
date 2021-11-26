@@ -200,8 +200,11 @@ function SignUp() {
                         <Flex flexDirection="column" justifyContent="center" alignItems="center" maxW="100%" mt="0px">
                             <Text color="#FF6100" fontWeight="medium">
                                 Already have an account?
-                                <Link href="/signin" color="#ff6a00" as="span" ms="5px" fontWeight="bold">
+                                <Link href="/signin">
+                                <Button ml="10px" borderColor="#FF6100" textColor="#FF6100" bgColor="white" >
                                     Sign In
+                                </Button>
+                                    {/* Sign In */}
                                 </Link>
                             </Text>
                         </Flex>

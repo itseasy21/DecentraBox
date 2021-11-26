@@ -110,7 +110,6 @@ const Header: React.FC = () => {
                                 Settings
                             </Link>
                             <Link href="/nominee">Nominee</Link>
-                            <Link href="/global">Global Market Information</Link>
                         </HStack>
                     </HStack>
                     <Flex alignItems={'center'}>
@@ -129,7 +128,6 @@ const Header: React.FC = () => {
                             <Link href="/trending" id="trending">
                                 Trending
                             </Link>
-                            <Link href="/global">Global Market Information</Link>
                         </Stack>
                     </Box>
                 ) : null}

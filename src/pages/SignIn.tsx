@@ -132,8 +132,10 @@ export const SignIn: React.FC = () => {
                             >
                                 <Text color={textColor} fontWeight="medium">
                                     Don't have an account?
-                                    <Link href="/signup" color={titleColor} as="span" ms="5px" fontWeight="bold">
-                                        Sign Up
+                                    <Link href="/signup" >
+                                    <Button ml="10px" borderColor="#FF6100" textColor="#FF6100" bgColor="white" >
+                                    Sign Up
+                                </Button>
                                     </Link>
                                 </Text>
                             </Flex>
