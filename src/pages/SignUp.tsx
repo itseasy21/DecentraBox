@@ -201,9 +201,9 @@ function SignUp() {
                             <Text color="#FF6100" fontWeight="medium">
                                 Already have an account?
                                 <Link href="/signin">
-                                <Button ml="10px" borderColor="#FF6100" textColor="#FF6100" bgColor="white" >
-                                    Sign In
-                                </Button>
+                                    <Button ml="10px" borderColor="#FF6100" textColor="#FF6100" bgColor="white">
+                                        Sign In
+                                    </Button>
                                     {/* Sign In */}
                                 </Link>
                             </Text>
